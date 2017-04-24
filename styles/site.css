@@ -1,0 +1,139 @@
+body, html {
+    padding: 0;
+    margin: 0;
+    color: #5e5e5e;
+    font-family: "Open Sans", sans-serif;
+}
+
+header {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background-size: 100%;
+}
+
+#headerInside {
+    background-color: #999999;
+    width: 1280px;
+    height: 50px;
+    margin: 0 auto;
+}
+
+#companyName {
+    width: 80px;
+    background-color: #ccc;
+    text-align: center;
+    font-family: "Huntsman", sans-serif;
+    float: left;
+    margin-left: 15px;
+    font-size: 1.3em;
+    line-height: 50px;
+    color: #fff;
+}
+
+#navWrap {
+    background-color: #ccc;
+    height: 50px;
+    float: right;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+#navWrap a {
+    display: block;
+    font-family: "Open Sans", sans-serif;
+    color: #fff;
+    text-decoration: none;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0 20px;
+    height: 50px;
+    line-height: 50px;
+}
+
+#navWrap a:hover {
+    background: #5e5e5e;
+}
+
+#navWrap a:last-child {
+    border-left: none;
+}
+
+#content {
+    min-height: 600px;
+    width: 1280px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* -------------------- НАЧАЛО стилей для Урока 4 --------------------- */
+table {
+    border: 1px;
+    width: 100%;
+}
+
+thead {
+    text-align: center;
+    color: white;
+    background-color: #999999;
+
+}
+
+td {
+    text-align: center;
+}
+
+#td_id {
+    text-align: center;
+    width: 10%;
+}
+
+#td_left {
+    text-align: left;
+}
+
+tfoot {
+    color: white;
+    text-align: center;
+    background-color: #ccc;
+}
+
+#uvedom {
+    background: #999999;
+    color: white;
+    width: 100%;
+    float: center;
+    padding: 5px 5px;
+}
+
+#uvedom_txt {
+    width: 100%;
+    height: 70px;
+    float: center;
+}
+
+#clear{
+    clear: left;
+    width: 100%;
+    height: 2px;
+}
+/* -------------------- КОНЕЦ стилей для Урока 4 --------------------- */
+
+/* -------------------- НАЧАЛО стилей для Урока 5 --------------------- */
+#сontainer {
+    width: 100%;
+    color: #5e5e5e;
+    background: gainsboro;
+    padding: 10px;
+}
+
+#left_col {
+    background: gainsboro;
+    float: left;
+    width: 300px;
+    text-align: top;
+}
+/* -------------------- КОНЕЦ стилей для Урока 5 --------------------- */
