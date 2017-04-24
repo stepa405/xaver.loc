@@ -16,6 +16,11 @@
         <div id="content">
             <?php include (getPage()); ?>
         </div>
+       <footer>
+           <div id="footerInside">
+               <?php showError() ; ?>
+           </div>    
+       </footer>        
     </body>
 </html>
 

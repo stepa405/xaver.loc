@@ -2,8 +2,24 @@
 
 # ПЕРЕМЕННЫЕ  
 $pages = array(); //массив для страниц
+$errorText = ''; //текст ошибок которые я обработал сам
+
 # ФУНКЦИИ
 # Функции инициализации и управления сайтом
+
+function showError (){
+    global $errorText;
+    echo $errorText;
+}
+
+function setError($text) {
+    global $errorText;
+    if ($errorText != NULL) {
+        $errorText = $errorText . '<br>' . $text;
+    } else {
+        $errorText = $text;
+    }    
+}
 
 function init() { //функция инициализации
     //error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
@@ -55,10 +71,14 @@ function createLink($page, array $params = []) {
 //функция создания получения параметра из url 
 function getUrlParam($name) {
     if (!array_key_exists($name, $_GET)) {
-        echo('URL parameter "' . $name . '" not found.');
-        exit;
+        //тут конечно надо выводить Exception, но я пока не знаю как
+        setError('URL parameter "' . $name . '" not found.');
+    } elseif ($_GET[$name] == NULL) {
+        //тут конечно надо выводить Exception, но я пока не знаю как
+        setError('URL parameter "' . $name . '" is empty.');
+    } else {
+        return $_GET[$name];
     }
-    return $_GET[$name];
 }
 
 ?>

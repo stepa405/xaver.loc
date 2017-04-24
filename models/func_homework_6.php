@@ -7,8 +7,9 @@ function get_field_val($field_name, $id_rec) {
 
     if ($id_rec != '') {
         return $_SESSION['data'][$id_rec][$field_name];
-    } else
+    } else {
         return '';
+    }    
 }
 
 //функция вывода формы просмотра/добавления
@@ -79,8 +80,8 @@ function add_table_body () {
             . '<td>' . $value['title'] . '</td>'
             . '<td>' . $value['price'] . '</td>'
             . '<td>' . 'Имя' . '</td>'
-            . '<td><a href=index.php?page=6&action=del_rec&id=' . $key . '>' . 'Удалить' . '</a></td>'
-            . '<td><a href=index.php?page=6&action=edt_rec&id=' . $key . '>' . 'Показать' . '</a></td>'
+            . '<td><a href="' . createLink(getUrlParam('page'), ['action' => 'del_rec', 'id' => $key]) . '">Удалить</a></td>'
+            . '<td><a href="' . createLink(getUrlParam('page'), ['action' => 'edt_rec', 'id' => $key]) . '">Показать</a></td>'
             . '</tr>';
         }
     }
@@ -97,20 +98,20 @@ function del_rec($id_rec = NULL) {
 
 //функция обработки данных в POST
 function handle_post() {
-
+    //Можно и наверное нужно решь через switch
     //События от Кнопок управления
-    if (!empty($_POST['btn_add'])) { // Добавить объявление
+    if (filter_input(INPUT_POST, 'btn_add')) { //Добавить объявление
         show_form();
     }
-    if (!empty($_POST['btn_del'])) { //Удалить все объявления
+    if (filter_input(INPUT_POST, 'btn_del')) { //Удалить все объявления
         del_rec();
     }
 
     //События от Кнопок на форме объявления
-    if (!empty($_POST['btn_ok_close'])) { //форма кнопка "Сохранить и закрыть"
+    if (filter_input(INPUT_POST, 'btn_ok_close')) { //форма кнопка "Сохранить и закрыть"
         $_SESSION['data'][] = $_POST;
     }
-    if (!empty($_POST['btn_ok'])) {//форма кнопка "Сохранить" но не закрывать
+    if (filter_input(INPUT_POST, 'btn_ok')) {//форма кнопка "Сохранить" но не закрывать
         $_SESSION['data'][] = $_POST;
         show_form();
     }
@@ -118,12 +119,9 @@ function handle_post() {
 
 //функция обработки данных в GET
 function handle_get() {
-    if (array_key_exists('action', $_GET) && array_key_exists('id', $_GET)) {
-        $id = $_GET['id'];
-
-        $action = $_GET['action'];
-        $id = $_GET['id'];
-        
+    $action = getUrlParam('action');
+    $id = getUrlParam('id');
+    if (($action != NULL) && (id != NULL)) {
         switch ($action) {
             case 'del_rec':
                 del_rec($id);

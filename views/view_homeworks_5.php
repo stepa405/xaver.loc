@@ -51,19 +51,17 @@ echo '<h3> Урок 5 Домашнее задание</h3>';
 </table>
 <br>
 <div>
-    <form action="index.php?page=5" method="post"> <!-- используем метод POST -->
-        <input type=hidden name='page' value='5'>
+    <form method="post"> <!-- используем метод POST -->
         Показать новость номер
         <input type="text" name='id_news'>
         <input type="submit"></p>
     </form>
-    <form action="index.php?page=5" method="post"> <!-- используем метод POST -->
-        <input type=hidden name='page' value='5'>
+    <form method="post"> <!-- используем метод POST -->
         <input type=hidden name='show_all_news' value='true'>
         <input type="submit" value="Показать все новости"></p>
     </form>
-    <br>    
-    <div id="сontainer">
-        <b><?php echo show_news() ?></b> </p>
-    </div>  
-</div>
+</div>    
+<div id="сontainer">
+    <b><?php echo show_news() ?></b> </p>
+</div>  
+
