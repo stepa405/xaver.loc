@@ -38,4 +38,27 @@ function getPage() { //возвращает имя страницы
     return $page;
 }
 
+//функция создания меню
+function createMenu() {
+    echo '<a href="' . createLink('0') . '">Главная</a>';
+    for ($index = 2; $index <= COUNT_DZ; $index++) {
+        echo '<a href="' . createLink($index) . '">Урок ' . $index . '</a>';
+    }
+}
+
+//функция создания url
+function createLink($page, array $params = []) {
+    unset($params['page']);
+    return 'index.php?' . http_build_query(array_merge(['page' => $page], $params));
+}
+
+//функция создания получения параметра из url 
+function getUrlParam($name) {
+    if (!array_key_exists($name, $_GET)) {
+        echo('URL parameter "' . $name . '" not found.');
+        exit;
+    }
+    return $_GET[$name];
+}
+
 ?>
