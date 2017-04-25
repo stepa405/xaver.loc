@@ -13,18 +13,12 @@ function get_field_val($field_name, $id_rec) {
 }
 
 //функция вывода формы просмотра/добавления
-function show_form($id_rec = '') {
+function show_form($id_rec = NULL) {
 
-    //проверяем наличие переданного id в запросе и в данных    
-    if ((array_key_exists('id', $_GET)) && (empty($_SESSION['data'][$id_rec]))) {
-        echo 'Параметр не найден';
-        exit;
-    }
-
-    if ($id_rec != '') {
-        echo '<form>';
-    } else {
+    if ($id_rec == NULL) {
         echo '<form  method="post">';
+    } else {
+        echo '<form>';
     }
     
     //вывод формы
@@ -53,7 +47,7 @@ function show_form($id_rec = '') {
     <br>
     ';
 
-    if ($id_rec == '') {
+    if ($id_rec == NULL) {
         echo ' 
         <div>
             <input type="submit" value="Сохранить" name="btn_ok" />
@@ -63,9 +57,10 @@ function show_form($id_rec = '') {
         </div>
         <br>
         ';
+    } else {
+        echo '<a href="' . createLink(getUrlParam('page')) . '">Закрыть</a>'
+        . '</form>';
     }
-    echo '<a href=index.php?page=6>Закрыть</a>'
-    . '</form>';
 }
 
 
@@ -98,7 +93,6 @@ function del_rec($id_rec = NULL) {
 
 //функция обработки данных в POST
 function handle_post() {
-    //Можно и наверное нужно решь через switch
     //События от Кнопок управления
     if (filter_input(INPUT_POST, 'btn_add')) { //Добавить объявление
         show_form();
