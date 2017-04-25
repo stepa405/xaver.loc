@@ -14,7 +14,9 @@ function get_field_val($field_name, $id_rec) {
 
 //функция вывода формы просмотра/добавления
 function show_form($id_rec = NULL) {
-
+// не нравится мне в целом эта отрисовка
+// хочется как-то поизящнне    
+    
     if ($id_rec == NULL) {
         echo '<form  method="post">';
     } else {
