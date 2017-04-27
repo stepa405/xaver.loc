@@ -2,8 +2,24 @@
 
 # ПЕРЕМЕННЫЕ  
 $pages = array(); //массив для страниц
+$errorText = ''; //текст ошибок которые я обработал сам
+
 # ФУНКЦИИ
 # Функции инициализации и управления сайтом
+
+function showError (){
+    global $errorText;
+    echo $errorText;
+}
+
+function setError($text) {
+    global $errorText;
+    if ($errorText != NULL) {
+        $errorText = $errorText . '<br>' . $text;
+    } else {
+        $errorText = $text;
+    }    
+}
 
 function init() { //функция инициализации
     //error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
@@ -36,6 +52,34 @@ function getPage() { //возвращает имя страницы
         $page = VIEWS_DIR . $pages[$page_number]; 
     }
     return $page;
+}
+
+//функция создания меню
+function createMenu() {
+    echo '<a href="' . createLink('0') . '">Главная</a>';
+    for ($index = 2; $index <= COUNT_DZ; $index++) {
+        echo '<a href="' . createLink($index) . '">Урок ' . $index . '</a>';
+    }
+}
+
+//функция создания url
+function createLink($page, array $params = []) {
+    unset($params['page']);
+    return 'index.php?' . http_build_query(array_merge(['page' => $page], $params));
+}
+
+//функция получения параметра из url
+//возвращает NUUL если параметр не найден или он пустой
+//возвращает значение если параметр найден и он не пустой
+function getUrlParam($name) {
+    if (!array_key_exists($name, $_GET)) {
+        //setError('URL parameter "' . $name . '" not found.');
+    } elseif ($_GET[$name] == NULL) {
+        //тут конечно надо выводить Exception, но я пока не знаю как
+        setError('URL parameter "' . $name . '" is empty.');
+    } else {
+        return $_GET[$name];
+    }
 }
 
 ?>

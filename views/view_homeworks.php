@@ -1,6 +1,13 @@
 <html lang="ru">
     <head>
         <meta charset="UTF-8">
+        
+        <?= (getUrlParam('page')==6) 
+                ? '<!-- Bootstrap CSS -->' 
+                .'<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/sandstone/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-G3G7OsJCbOk1USkOY4RfeX1z27YaWrZ1YuaQ5tbuawed9IoreRDpWpTkZLXQfPm3" crossorigin="anonymous">'
+                . '<!--https://bootswatch.com/sandstone/-->'
+                : '' ?>
         <link href="styles/site.css" rel="stylesheet">
         <title>Xaver Уроки</title>
     </head>
@@ -9,19 +16,18 @@
             <div id="headerInside">
                 <div id="companyName">XaVeR</div>
                 <div id="navWrap"> 
-                    <!--TODO: Подумать как здесь сделать вывод более правильно и интересно-->
-                    <a href="?page=">Главная</a>
-                    <a href="?page=2">Урок 2</a>
-                    <a href="?page=3">Урок 3</a>
-                    <a href="?page=4">Урок 4</a>
-                    <a href="?page=5">Урок 5</a>
-                    <a href="?page=6">Урок 6</a>
+                   <?php createMenu(); ?>
                 </div>
             </div>
         </header>
         <div id="content">
             <?php include (getPage()); ?>
         </div>
+       <footer>
+           <div id="footerInside">
+               <?php showError() ; ?>
+           </div>    
+       </footer>        
     </body>
 </html>
 
