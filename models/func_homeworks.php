@@ -68,11 +68,12 @@ function createLink($page, array $params = []) {
     return 'index.php?' . http_build_query(array_merge(['page' => $page], $params));
 }
 
-//функция создания получения параметра из url 
+//функция получения параметра из url
+//возвращает NUUL если параметр не найден или он пустой
+//возвращает значение если параметр найден и он не пустой
 function getUrlParam($name) {
     if (!array_key_exists($name, $_GET)) {
-        //тут конечно надо выводить Exception, но я пока не знаю как
-        setError('URL parameter "' . $name . '" not found.');
+        //setError('URL parameter "' . $name . '" not found.');
     } elseif ($_GET[$name] == NULL) {
         //тут конечно надо выводить Exception, но я пока не знаю как
         setError('URL parameter "' . $name . '" is empty.');
