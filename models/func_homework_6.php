@@ -94,11 +94,10 @@ function tbl_fill_body() {
             echo ''
             . '<tr>'
             . '<td>' . $key . '</td>'
-            . '<td>' . $value['name'] . '</td>'
-            . '<td>' . $value['title'] . '</td>'
+            . '<td> <a href="' . createLink(getUrlParam('page'), ['action' => 'rec_edt', 'id' => $key]) . '">' . $value['title']. '</a>'
             . '<td>' . $value['price'] . '</td>'
+            . '<td>' . $value['name'] . '</td>'
             . '<td><a class="btn btn-primary btn-xs" href="' . createLink(getUrlParam('page'), ['action' => 'rec_del', 'id' => $key]) . '">Удалить</a></td>'
-            . '<td><a class="btn btn-primary btn-xs" href="' . createLink(getUrlParam('page'), ['action' => 'rec_edt', 'id' => $key]) . '">Показать</a></td>'
             . '</tr>';
         }
     }

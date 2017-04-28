@@ -69,7 +69,7 @@ page_show();
                 <div class="form-group">
                     <label for="name" class="col-lg-2 control-label">Имя</label>
                     <div class="col-lg-10">
-                        <input type="text" class="form-control" name="name" id="name" placeholder="ФИО"
+                        <input type="text" class="form-control" name="name" id="name" placeholder="name"
                                value="<?php echo $record_data['name'] ?>">
                     </div>
                 </div> 
@@ -78,7 +78,7 @@ page_show();
                 <div class="form-group">
                     <label for="email" class="col-lg-2 control-label">Email</label>
                     <div class="col-lg-10">
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Email"
+                        <input type="email" class="form-control" name="email" id="email" placeholder="email"
                                value="<?php echo $record_data['email'] ?>">
                         <div class="checkbox">
                             <label>
@@ -171,11 +171,10 @@ page_show();
     <table class="table table-striped table-hover ">
         <thead>
             <tr>
-                <th style="text-align: center;">id</th>
-                <th style="text-align: center;">ФИО</th>
-                <th style="text-align: center;">Название объявления</th>
+                <th style="text-align: center;">№ п.п.</th>
+                <th style="text-align: center;">Название</th>
                 <th style="text-align: center;">Цена</th>
-                <th style="text-align: center;"></th>
+                <th style="text-align: center;">Имя</th>
                 <th style="text-align: center;"></th>
             </tr>
         </thead>
