@@ -2,7 +2,7 @@
     <head>
         <meta charset="UTF-8">
         
-        <?= (getUrlParam('page')==6) 
+        <?= (getUrlParam('page')>=6) 
                 ? '<!-- Bootstrap CSS -->' 
                 .'<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/sandstone/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-G3G7OsJCbOk1USkOY4RfeX1z27YaWrZ1YuaQ5tbuawed9IoreRDpWpTkZLXQfPm3" crossorigin="anonymous">'

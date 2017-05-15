@@ -3,7 +3,7 @@
 const VIEWS_DIR = 'views/';
 const MAIN_VIEW = 'views/view_homeworks.php';
 const MAIN_PAGE = 'view_main_page.php';
-const COUNT_DZ = 6; //Количество домашних заданий для отображения
+const COUNT_DZ = 7; //Количество домашних заданий для отображения
 
 #Исходные данные для Урока 4
 $ini_string = '

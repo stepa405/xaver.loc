@@ -1,8 +1,10 @@
 <?php
-require_once("models/func_homework_6.php");
-echo '<h3> Урок 6 Домашнее задание</h3>';
+setcookie('name', 'value', time()+60*60*24*7);
 
-#Функции находятся тут  \models\func_homework_6.php 
+require_once("models/func_homework_7.php");
+echo '<h3> Урок 7 Домашнее задание</h3>';
+
+#Функции находятся тут  \models\func_homework_7.php 
 
 page_show();
 ?>
@@ -11,6 +13,8 @@ page_show();
 <div class="panel panel-default">
     <a href=" <?= createLink(getUrlParam('page'), ['is_show_dz' => '1']) ?>"
        class="btn btn-default" >Домашнее задание</a>
+    <a href=" <?= createLink(getUrlParam('page'), ['is_show_ad' => '1']) ?>"
+       class="btn btn-default" >Управление</a>
     <a href=" <?= createLink(getUrlParam('page'), ['action' => 'rec_add']) ?>"
        class="btn btn-primary" name="btn_add">Добавить объявление</a>
     <a href=" <?= createLink(getUrlParam('page'), ['action' => 'rec_del']) ?>"
@@ -21,20 +25,47 @@ page_show();
 <div 
 <?php echo getUrlParam('is_show_dz') ? "style='display:block;' " : "style='display:none;' " ?>
     class="panel panel-default">
-    <div class="panel-heading">Урок 6 Домашнее задание </div>
-    1)	Создать html форму на подобие данной:<br>
-    2)	Всё что пришло из формы записать в $_SESSION как новое объявление.<br>
-    3)	Под формой создать вывод всех объявлений, содержащихся в сессии по шаблону:<br>
-    Название объявления | Цена | Имя | Удалить<br>
-    4)	При нажатии на «название объявления» на экран выводится шаблон объявления как из пункта 1, только в места полей подставляются истинные значения<br>
-    5)	При нажатии на «Удалить», объявление удаляется из сессии<br>
-    <br>
-    <p>Дополнительно сделал:<br>
-        - подключил https://bootswatch.com/sandstone/<br>
+    <div class="panel-heading">Урок 7 Домашнее задание </div>
 
-        <a href=" <?= createLink(getUrlParam('page')) ?>"
-           class="btn btn-default btn-sm" >Закрыть</a>      
+    <p>Следующие задания требуется воспринимать как ТЗ (Техническое задание)<br>
+        p.s. Разработчик, помни!<br>
+        Лучше уточнить ТЗ перед выполнением у заказчика, если ты что-то не понял, чем сделать, переделать, потерять время, деньги, нервы, репутацию.<br>
+        Не забывай о навыках коммуникации :)</p>
+
+    <p>1) dz6_1.php Сохранять объявления в Cookie и выставить время жизни - неделю<br>
+       2) dz6_2.php Сохранять объявления в файлах</p>
+
+    <a href=" <?= createLink(getUrlParam('page')) ?>"
+       class="btn btn-default btn-sm" >Закрыть</a>      
 </div>
+
+<div 
+<?php echo getUrlParam('is_show_ad') ? "style='display:block;' " : "style='display:none;' " ?>
+    class="panel panel-default">
+    <div class="panel-heading">Настройки </div>
+    Сохранять данные в <br> 
+    <form class="form-horizontal" method="post">
+
+        <label>
+            <input type="checkbox" name="сookie"
+                   <?php echo ($_SESSION['ad']['сookie']) ? 'checked=""' : ''; ?>> Cookie
+            <input type="checkbox" name="file"
+                   <?php echo ($_SESSION['ad']['file']) ? 'checked=""' : ''; ?>> File
+        </label>
+        <div>
+
+            <a href=" <?= createLink(getUrlParam('page')) ?>" accesskey=""class="btn btn-default btn-sm" >Закрыть</a>
+            <button type="submit" class="btn btn-primary btn-sm" name="btn_ok_ad" value="btn_ok_ad">Сохранить</button>
+        </div>     
+    </form>     
+    <br>
+    <?php echo var_dump($_SESSION); ?>
+    <?php echo var_dump($_COOKIE); ?>
+    <?php echo var_dump(unserialize($_COOKIE['data'])); ?>
+    
+    <br>
+</div>
+
 
 <!--Форма объявления-->
 <div 
